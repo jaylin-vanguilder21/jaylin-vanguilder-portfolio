@@ -1,5 +1,15 @@
 ---
-title: "jaylin-vanguilder-portfolio"
+title: "Jaylin Van Guilder"
+about:
+  template: jolla
+  image: van_guilder_prof.jpg
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/jaylin-van-guilder-235141383/
+    - icon: github
+      text: Github
+      href: https://github.com/jaylin-vanguilder21
 ---
 
 This is a Quarto website.
@@ -9,3 +19,17 @@ To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 ```{r}
 1 + 1
 ```
+
+Jaylin Van Guilder is a third year student at \[California State University, Monterey Bay\] (<https://csumb.edu/>).
+
+## Education
+
+CSU Monterey Bay \| Seaside, CA
+
+Still in University...
+
+## Experience
+
+Marina Coast Water District \| Operations and Maintenance Intern \| November 2023 - Present
+
+Crisis Text Line \| Crisis Text Line Counselor \| December 2025 - Present
