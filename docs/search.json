@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Jaylin Van Guilder",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nJaylin Van Guilder is a third year student at [California State University, Monterey Bay] (https://csumb.edu/)."
+    "text": "This is a Jaylin’s Quarto Website.\nJaylin Van Guilder is a third year student at [California State University, Monterey Bay] (https://csumb.edu/)."
   },
   {
     "objectID": "index.html#education",
@@ -26,5 +26,33 @@
     "title": "Jaylin Van Guilder",
     "section": "Experience",
     "text": "Experience\nMarina Coast Water District | Operations and Maintenance Intern | November 2023 - Present\nCrisis Text Line | Crisis Text Line Counselor | December 2025 - Present"
+  },
+  {
+    "objectID": "Part1.html",
+    "href": "Part1.html",
+    "title": "Part 1 - Process",
+    "section": "",
+    "text": "Data Source:\nDescribe the data, including variables and data types:\nIdentify the research questions:\n\nThe NASA APOD dataset contains daily astronomy images and videos from 1995 to the present. It includes date, title, explanation text, image, URL, media type (image/video), and astronomer credits. This is the link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-01-20/readme.md. Research questions: Which months produce the most images of galaxies vs. nebulae vs solar system objects? ; Do explanation lengths correlate with image complexity? ; Has the proportion of videos vs still images increased over time?"
+  },
+  {
+    "objectID": "Part1.html#data-description",
+    "href": "Part1.html#data-description",
+    "title": "Part 1 - Process",
+    "section": "",
+    "text": "Data Source:\nDescribe the data, including variables and data types:\nIdentify the research questions:\n\nThe NASA APOD dataset contains daily astronomy images and videos from 1995 to the present. It includes date, title, explanation text, image, URL, media type (image/video), and astronomer credits. This is the link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-01-20/readme.md. Research questions: Which months produce the most images of galaxies vs. nebulae vs solar system objects? ; Do explanation lengths correlate with image complexity? ; Has the proportion of videos vs still images increased over time?"
+  },
+  {
+    "objectID": "Part1.html#data-visualization",
+    "href": "Part1.html#data-visualization",
+    "title": "Part 1 - Process",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nWhat do you want final visualizations to look like?\nWhat do you want to show on your final visualizations in order to answer the research questions? How do you plan to do that?\nWhat is missing from your data or would you need to change in your data to create these visualizations?"
+  },
+  {
+    "objectID": "Part1.html#data-cleaning",
+    "href": "Part1.html#data-cleaning",
+    "title": "Part 1 - Process",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\n\nDo you need to reformat any variables into different types (e.g. facotors, time, dates, strings)? Or remove information from variable values?\nDo you need to deal with any missing data, especially missing data coded other than NA?\nDo you need to filter your data? How?\nDo you need to create any new variables? What variables? How?\nDo you need to add new data (join) to your data? What data? How?\nDo you need to pivot your data in any way? Why? How?\nDo you need to summarize any of the variables? Which ones? How?\nWhat other aspects of your data need to be ‘fixed’ in order to make your data visualizations?\nAre there any variables you can exclude from your data?\n\nMake your programming more efficient using select(), but need to have three yeses above"
   }
 ]

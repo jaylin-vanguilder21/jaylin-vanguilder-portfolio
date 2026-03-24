@@ -12,9 +12,7 @@ about:
       href: https://github.com/jaylin-vanguilder21
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+This is a Jaylin's Quarto Website.
 
 
 Jaylin Van Guilder is a third year student at \[California State University, Monterey Bay\] (<https://csumb.edu/>).

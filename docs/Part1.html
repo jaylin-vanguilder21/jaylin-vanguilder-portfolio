@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Jaylin Van Guilder – jaylin-vanguilder-portfolio</title>
+<title>Part 1 - Process – jaylin-vanguilder-portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,6 +35,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -90,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -111,54 +112,81 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
+   
   <ul>
-  <li><a href="#education" id="toc-education" class="nav-link active" data-scroll-target="#education">Education</a></li>
-  <li><a href="#experience" id="toc-experience" class="nav-link" data-scroll-target="#experience">Experience</a></li>
+  <li><a href="#data-description" id="toc-data-description" class="nav-link active" data-scroll-target="#data-description">Data Description</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="van_guilder_prof.jpg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Jaylin Van Guilder</h1>
+<h1 class="title">Part 1 - Process</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    
+  
+    
   </div>
-</header><main class="content" id="quarto-document-content">
+  
 
-<p>This is a Jaylin’s Quarto Website.</p>
-<p>Jaylin Van Guilder is a third year student at [California State University, Monterey Bay] (<a href="https://csumb.edu/" class="uri">https://csumb.edu/</a>).</p>
-<section id="education" class="level2">
-<h2 data-anchor-id="education">Education</h2>
-<p>CSU Monterey Bay | Seaside, CA</p>
-<p>Still in University…</p>
+
+</header>
+
+
+<section id="data-description" class="level2">
+<h2 class="anchored" data-anchor-id="data-description">Data Description</h2>
+<ol type="1">
+<li><p>Data Source:</p></li>
+<li><p>Describe the data, including variables and data types:</p></li>
+<li><p>Identify the research questions:</p></li>
+</ol>
+<p>The NASA APOD dataset contains daily astronomy images and videos from 1995 to the present. It includes date, title, explanation text, image, URL, media type (image/video), and astronomer credits. This is the link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-01-20/readme.md. Research questions: Which months produce the most images of galaxies vs.&nbsp;nebulae vs solar system objects? ; Do explanation lengths correlate with image complexity? ; Has the proportion of videos vs still images increased over time?</p>
 </section>
-<section id="experience" class="level2">
-<h2 data-anchor-id="experience">Experience</h2>
-<p>Marina Coast Water District | Operations and Maintenance Intern | November 2023 - Present</p>
-<p>Crisis Text Line | Crisis Text Line Counselor | December 2025 - Present</p>
+<section id="data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
+<ol type="1">
+<li><p>What do you want final visualizations to look like?</p></li>
+<li><p>What do you want to show on your final visualizations in order to answer the research questions? How do you plan to do that?</p></li>
+<li><p>What is missing from your data or would you need to change in your data to create these visualizations?</p></li>
+</ol>
+</section>
+<section id="data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h2>
+<ol type="1">
+<li><p>Do you need to reformat any variables into different types (e.g.&nbsp;facotors, time, dates, strings)? Or remove information from variable values?</p></li>
+<li><p>Do you need to deal with any missing data, especially missing data coded other than NA?</p></li>
+<li><p>Do you need to filter your data? How?</p></li>
+<li><p>Do you need to create any new variables? What variables? How?</p></li>
+<li><p>Do you need to add new data (join) to your data? What data? How?</p></li>
+<li><p>Do you need to pivot your data in any way? Why? How?</p></li>
+<li><p>Do you need to summarize any of the variables? Which ones? How?</p></li>
+<li><p>What other aspects of your data need to be ‘fixed’ in order to make your data visualizations?</p></li>
+<li><p>Are there any variables you can exclude from your data?</p></li>
+</ol>
+<p><em>Make your programming more efficient using <code>select()</code>, but need to have three yeses above</em></p>
 
 
 </section>
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://www.linkedin.com/in/jaylin-van-guilder-235141383/" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/jaylin-vanguilder21" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

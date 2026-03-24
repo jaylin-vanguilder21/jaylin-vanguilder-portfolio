@@ -1,0 +1,43 @@
+---
+title: "Part 1 - Process"
+---
+
+## Data Description
+
+1. Data Source:
+
+2. Describe the data, including variables and data types:
+
+3.  Identify the research questions: 
+
+The NASA APOD dataset contains daily astronomy images and videos from 1995 to the present. It includes date, title, explanation text, image, URL, media type (image/video), and astronomer credits. This is the link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-01-20/readme.md. Research questions: Which months produce the most images of galaxies vs. nebulae vs solar system objects? ; Do explanation lengths correlate with image complexity? ; Has the proportion of videos vs still images increased over time?
+
+## Data Visualization
+
+1. What do you want final visualizations to look like?
+
+2. What do you want to show on your final visualizations in order to answer the research questions? How do you plan to do that?
+
+3. What is missing from your data or would you need to change in your data to create these visualizations?
+
+## Data Cleaning
+
+1. Do you need to reformat any variables into different types (e.g. facotors, time, dates, strings)? Or remove information from variable values?
+
+2. Do you need to deal with any missing data, especially missing data coded other than NA?
+
+3. Do you need to filter your data? How?
+
+4. Do you need to create any new variables? What variables? How?
+
+5. Do you need to add new data (join) to your data? What data? How?
+
+6. Do you need to pivot your data in any way? Why? How?
+
+7. Do you need to summarize any of the variables? Which ones? How?
+
+8. What other aspects of your data need to be 'fixed' in order to make your data visualizations?
+
+9. Are there any variables you can exclude from your data?
+
+*Make your programming more efficient using `select()`, but need to have three yeses above*
