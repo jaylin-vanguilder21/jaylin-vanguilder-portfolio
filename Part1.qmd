@@ -4,40 +4,80 @@ title: "Part 1 - Process"
 
 ## Data Description
 
-1. Data Source:
+1. Data Source: 
 
-2. Describe the data, including variables and data types:
+The NASA APOD dataset contains daily astronomy images and videos from 1995 to the present. It includes date, title, explanation text, image, URL, media type (image/video), and astronomer credits. This is the link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-01-20/readme.md.
+
+2. Describe the data, including variables and data types: 
+
+Variables include copyright (character), date, explanation (character), media_type (character), title (character), url (character), hdurl (character).
 
 3.  Identify the research questions: 
 
-The NASA APOD dataset contains daily astronomy images and videos from 1995 to the present. It includes date, title, explanation text, image, URL, media type (image/video), and astronomer credits. This is the link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-01-20/readme.md. Research questions: Which months produce the most images of galaxies vs. nebulae vs solar system objects? ; Do explanation lengths correlate with image complexity? ; Has the proportion of videos vs still images increased over time?
+*RQ1* -  Which months produce the most images of galaxies vs. nebulae vs solar system objects? 
+
+*RQ2* - Do explanation lengths correlate with image complexity? 
+
+*RQ3* - Has the proportion of videos vs still images increased over time?
 
 ## Data Visualization
 
 1. What do you want final visualizations to look like?
 
+*RQ1* - I'd use a stacked bar chart. 
+
+*RQ2* - I'd use a scatter plot with a smoothed line. 
+
+*RQ3* - I'd use a line chart to see how the change is over time.
+
 2. What do you want to show on your final visualizations in order to answer the research questions? How do you plan to do that?
 
+*RQ1* - I need a to create a variable identifying object type, with groups being: galaxy, nebula, solar system, etc. And a month variable. To create the object type variable, I'd use keywords from the title and explanation.
+
+*RQ2* - I'd create a variable for explanation length using word count and create another for complexity. I'd define complexity by number of distinct object keywords mentioned (e.g., both galaxy and nebula words).
+
+*RQ3* - I would create a year or year/month variables from the date variable. I'd then group by year or year/month and media type to get the proportions. Then plot the proportions over time.
+
 3. What is missing from your data or would you need to change in your data to create these visualizations?
+
+I'm missing the object type, complexity and explanation length. I'd also need to create new dates for research question three. I may need to exclude or recode uncommon media types that are not an image or video if they are included in the data.
 
 ## Data Cleaning
 
 1. Do you need to reformat any variables into different types (e.g. facotors, time, dates, strings)? Or remove information from variable values?
 
+Yes, I need to convert media type to a factor with clean levels (e.g., image, video), making sure no other versions of image or video exist in the data (e.g. Image or IMAGE).
+
 2. Do you need to deal with any missing data, especially missing data coded other than NA?
+
+Yes, I need to check for any missing explanations, titles, media types and dates. For RQ1, I'd recode any rows without a clear object type after keyword searching as either other or exclude it. For RQ2, I'd drop any rows with missing explanation length. For RQ3, I'd drop any rows with missing or irregular media types or recode them to other.
 
 3. Do you need to filter your data? How?
 
+Yes, I'll need to filter by media type (e.g., image or video).
+
 4. Do you need to create any new variables? What variables? How?
+
+Yes, I need to create object type (using keyword search through title and explanation), year or year/month (using the existing date variable), explanation length (using word count from explanation variable) and complexity (number of unique object type categories tagged in a given APOD).
 
 5. Do you need to add new data (join) to your data? What data? How?
 
+No I do not need to join any new data.
+
 6. Do you need to pivot your data in any way? Why? How?
+
+I do not need to pivot my data.
 
 7. Do you need to summarize any of the variables? Which ones? How?
 
+Yes, RQ1 needs a summary count of APOD entries by month and object type. RQ2 needs a summary of correlation statistics between explanation length and complexity, possibly by decade or media type. RQ3 will need a summary of annual or monthly counts and number of media types.
+
 8. What other aspects of your data need to be 'fixed' in order to make your data visualizations?
 
+I need to make sure date ordering is correction and create an ordered factor of month names to make sure it's not alphabetical. For object type I need to define what is an ambiguous case for inclusion purposes.
+
 9. Are there any variables you can exclude from your data?
+
+I will not need url, hdurl or copyright for my research question. 
 
 *Make your programming more efficient using `select()`, but need to have three yeses above*

@@ -145,33 +145,77 @@ ul.task-list li input[type="checkbox"] {
 <section id="data-description" class="level2">
 <h2 class="anchored" data-anchor-id="data-description">Data Description</h2>
 <ol type="1">
-<li><p>Data Source:</p></li>
-<li><p>Describe the data, including variables and data types:</p></li>
-<li><p>Identify the research questions:</p></li>
+<li>Data Source:</li>
 </ol>
-<p>The NASA APOD dataset contains daily astronomy images and videos from 1995 to the present. It includes date, title, explanation text, image, URL, media type (image/video), and astronomer credits. This is the link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-01-20/readme.md. Research questions: Which months produce the most images of galaxies vs.&nbsp;nebulae vs solar system objects? ; Do explanation lengths correlate with image complexity? ; Has the proportion of videos vs still images increased over time?</p>
+<p>The NASA APOD dataset contains daily astronomy images and videos from 1995 to the present. It includes date, title, explanation text, image, URL, media type (image/video), and astronomer credits. This is the link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-01-20/readme.md.</p>
+<ol start="2" type="1">
+<li>Describe the data, including variables and data types:</li>
+</ol>
+<p>Variables include copyright (character), date, explanation (character), media_type (character), title (character), url (character), hdurl (character).</p>
+<ol start="3" type="1">
+<li>Identify the research questions:</li>
+</ol>
+<p><em>RQ1</em> - Which months produce the most images of galaxies vs.&nbsp;nebulae vs solar system objects?</p>
+<p><em>RQ2</em> - Do explanation lengths correlate with image complexity?</p>
+<p><em>RQ3</em> - Has the proportion of videos vs still images increased over time?</p>
 </section>
 <section id="data-visualization" class="level2">
 <h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
 <ol type="1">
-<li><p>What do you want final visualizations to look like?</p></li>
-<li><p>What do you want to show on your final visualizations in order to answer the research questions? How do you plan to do that?</p></li>
-<li><p>What is missing from your data or would you need to change in your data to create these visualizations?</p></li>
+<li>What do you want final visualizations to look like?</li>
 </ol>
+<p><em>RQ1</em> - I’d use a stacked bar chart.</p>
+<p><em>RQ2</em> - I’d use a scatter plot with a smoothed line.</p>
+<p><em>RQ3</em> - I’d use a line chart to see how the change is over time.</p>
+<ol start="2" type="1">
+<li>What do you want to show on your final visualizations in order to answer the research questions? How do you plan to do that?</li>
+</ol>
+<p><em>RQ1</em> - I need a to create a variable identifying object type, with groups being: galaxy, nebula, solar system, etc. And a month variable. To create the object type variable, I’d use keywords from the title and explanation.</p>
+<p><em>RQ2</em> - I’d create a variable for explanation length using word count and create another for complexity. I’d define complexity by number of distinct object keywords mentioned (e.g., both galaxy and nebula words).</p>
+<p><em>RQ3</em> - I would create a year or year/month variables from the date variable. I’d then group by year or year/month and media type to get the proportions. Then plot the proportions over time.</p>
+<ol start="3" type="1">
+<li>What is missing from your data or would you need to change in your data to create these visualizations?</li>
+</ol>
+<p>I’m missing the object type, complexity and explanation length. I’d also need to create new dates for research question three. I may need to exclude or recode uncommon media types that are not an image or video if they are included in the data.</p>
 </section>
 <section id="data-cleaning" class="level2">
 <h2 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h2>
 <ol type="1">
-<li><p>Do you need to reformat any variables into different types (e.g.&nbsp;facotors, time, dates, strings)? Or remove information from variable values?</p></li>
-<li><p>Do you need to deal with any missing data, especially missing data coded other than NA?</p></li>
-<li><p>Do you need to filter your data? How?</p></li>
-<li><p>Do you need to create any new variables? What variables? How?</p></li>
-<li><p>Do you need to add new data (join) to your data? What data? How?</p></li>
-<li><p>Do you need to pivot your data in any way? Why? How?</p></li>
-<li><p>Do you need to summarize any of the variables? Which ones? How?</p></li>
-<li><p>What other aspects of your data need to be ‘fixed’ in order to make your data visualizations?</p></li>
-<li><p>Are there any variables you can exclude from your data?</p></li>
+<li>Do you need to reformat any variables into different types (e.g.&nbsp;facotors, time, dates, strings)? Or remove information from variable values?</li>
 </ol>
+<p>Yes, I need to convert media type to a factor with clean levels (e.g., image, video), making sure no other versions of image or video exist in the data (e.g.&nbsp;Image or IMAGE).</p>
+<ol start="2" type="1">
+<li>Do you need to deal with any missing data, especially missing data coded other than NA?</li>
+</ol>
+<p>Yes, I need to check for any missing explanations, titles, media types and dates. For RQ1, I’d recode any rows without a clear object type after keyword searching as either other or exclude it. For RQ2, I’d drop any rows with missing explanation length. For RQ3, I’d drop any rows with missing or irregular media types or recode them to other.</p>
+<ol start="3" type="1">
+<li>Do you need to filter your data? How?</li>
+</ol>
+<p>Yes, I’ll need to filter by media type (e.g., image or video).</p>
+<ol start="4" type="1">
+<li>Do you need to create any new variables? What variables? How?</li>
+</ol>
+<p>Yes, I need to create object type (using keyword search through title and explanation), year or year/month (using the existing date variable), explanation length (using word count from explanation variable) and complexity (number of unique object type categories tagged in a given APOD).</p>
+<ol start="5" type="1">
+<li>Do you need to add new data (join) to your data? What data? How?</li>
+</ol>
+<p>No I do not need to join any new data.</p>
+<ol start="6" type="1">
+<li>Do you need to pivot your data in any way? Why? How?</li>
+</ol>
+<p>I do not need to pivot my data.</p>
+<ol start="7" type="1">
+<li>Do you need to summarize any of the variables? Which ones? How?</li>
+</ol>
+<p>Yes, RQ1 needs a summary count of APOD entries by month and object type. RQ2 needs a summary of correlation statistics between explanation length and complexity, possibly by decade or media type. RQ3 will need a summary of annual or monthly counts and number of media types.</p>
+<ol start="8" type="1">
+<li>What other aspects of your data need to be ‘fixed’ in order to make your data visualizations?</li>
+</ol>
+<p>I need to make sure date ordering is correction and create an ordered factor of month names to make sure it’s not alphabetical. For object type I need to define what is an ambiguous case for inclusion purposes.</p>
+<ol start="9" type="1">
+<li>Are there any variables you can exclude from your data?</li>
+</ol>
+<p>I will not need url, hdurl or copyright for my research question.</p>
 <p><em>Make your programming more efficient using <code>select()</code>, but need to have three yeses above</em></p>
 
 
