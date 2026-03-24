@@ -10,8 +10,9 @@ website:
         text: "Home"
       - href: about.qmd
         text: "About Me"
-      - href: Part1.qmd
+        href: Part1.qmd
         text: "Part 1"
+        
       
 
 format:
