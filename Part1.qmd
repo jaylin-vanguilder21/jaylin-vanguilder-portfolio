@@ -81,3 +81,7 @@ I need to make sure date ordering is correction and create an ordered factor of 
 I will not need url, hdurl or copyright for my research question. 
 
 *Make your programming more efficient using `select()`, but need to have three yeses above*
+
+## Data Cleaning
+
+## Data Visualization Pt. 2
