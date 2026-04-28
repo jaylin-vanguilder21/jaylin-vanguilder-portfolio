@@ -83,5 +83,74 @@ I will not need url, hdurl or copyright for my research question.
 *Make your programming more efficient using `select()`, but need to have three yeses above*
 
 ## Data Cleaning Pt. 2
+```{r}
+#| label: Data-Cleaning
+library(tidyverse)
+library(lubridate)
+library(stringr)
+
+apod_raw <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-01-20/apod.csv")
+
+#Transformation #1: Selecting relevant columns and dates, dropping url/hdurl/copyright as planned, converting date to proper date format for time-based grouping
+
+apod_base <- apod_raw |>
+  select(date, title, explanation, media_type) |>
+  mutate(date = ymd(date)) 
+
+#Transformation 2: Cleaning media_type and adding basic date feature, extracting month/year as ordered factors for RQ1 and RQ3 plotting
+
+apod_timed <- apod_base |>
+  mutate(
+    media_type_clean = str_to_lower(str_trim(media_type)), #stringr for consistent casing
+    media_type_clean = case_when(
+      media_type_clean == "image" ~ "image",
+      media_type_clean == "video" ~ "video",
+      TRUE ~ "other" #Recode irregular types
+    ),
+    month = month(date, label = TRUE), #Ordered month for calendar
+    year = year(date)
+  )
+
+#Transformation 3: Add RQ-specific text-derived variables, creating object_type by keyword matching (galaxy, nebula, solar, other), explanation_length for RQ2 and complexity as count of distinct objects mentioned
+
+apod_final <- apod_timed |>
+  mutate(
+    text_content = str_to_lower(str_c(title, " ", explanation, sep = " ")), #Combine texts safely so no error pops up
+    #Keyword matching for object_type
+    has_galaxy = str_detect(text_content, "galaxy|milky way"),
+    has_nebula = str_detect(text_content, "nebula|nebulae"),
+    has_solar = str_detect(text_content, "planet|mars|jupiter|saturn|venus|mercury|earth|moon|sun"),
+    object_type = case_when(
+      has_galaxy & !has_nebula & !has_solar ~ "galaxy",
+      has_nebula & !has_galaxy & !has_solar ~ "nebula",
+      has_solar & !has_galaxy & !has_nebula ~ "solar",
+      TRUE ~ "other" #For amiguous/multi-object cases
+    ),
+    explanation_length = str_count(explanation, boundary("word")), #Word count for RQ2
+    complexity = (has_galaxy + has_nebula + has_solar) #Distinct types
+  ) |>
+  select(-text_content, -media_type)
+
+#Exporting datasets
+#write_csv(apod_raw, "data-raw/apod_raw.csv")
+#write_csv(apod_base, "data-raw/apod_base.csv")
+#write_csv(apod_timed, "data-raw/apod_timed.csv")
+#write_csv(apod_final, "data-clean/apod_final.csv")
+```
 
 ## Data Visualization Pt. 2
+```{r}
+#| label: Data-Viz-RQ1
+apod_final |>
+  count(month, object_type) |>
+  filter(object_type != "other") |>
+  ggplot(aes(x = month, y = n, fill = object_type)) +
+  geom_col() +
+  labs(title = "APOD Object Types by Month",
+       x = "Month",
+       y = "Count",
+       fill = "Object Type") +
+  theme_light() +
+  scale_fill_brewer(type = "qual", palette = "Set2") #Changing the color of object type using a new code I found!
+```
+
