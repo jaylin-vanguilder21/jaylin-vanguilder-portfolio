@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -154,10 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#data-description" id="toc-data-description" class="nav-link active" data-scroll-target="#data-description">Data Description</a></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
   <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
-  <li><a href="#data-cleaning-pt.-2" id="toc-data-cleaning-pt.-2" class="nav-link" data-scroll-target="#data-cleaning-pt.-2">Data Cleaning Pt. 2</a></li>
-  <li><a href="#data-visualization-pt.-2" id="toc-data-visualization-pt.-2" class="nav-link" data-scroll-target="#data-visualization-pt.-2">Data Visualization Pt. 2</a></li>
+  <li><a href="#visualization-1" id="toc-visualization-1" class="nav-link" data-scroll-target="#visualization-1">Visualization 1</a></li>
+  <li><a href="#visualization-2" id="toc-visualization-2" class="nav-link" data-scroll-target="#visualization-2">Visualization 2</a></li>
   </ul>
 </nav>
     </div>
@@ -185,171 +149,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="data-description" class="level2">
 <h2 class="anchored" data-anchor-id="data-description">Data Description</h2>
-<ol type="1">
-<li>Data Source:</li>
-</ol>
-<p>The NASA APOD dataset contains daily astronomy images and videos from 1995 to the present. It includes date, title, explanation text, image, URL, media type (image/video), and astronomer credits. This is the link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-01-20/readme.md.</p>
-<ol start="2" type="1">
-<li>Describe the data, including variables and data types:</li>
-</ol>
-<p>Variables include copyright (character), date, explanation (character), media_type (character), title (character), url (character), hdurl (character).</p>
-<ol start="3" type="1">
-<li>Identify the research questions:</li>
-</ol>
+<p>The NASA APOD dataset contains daily astronomy images and videos from 1995 to the present. It includes date, title, explanation text, image, URL, media type (image/video), and astronomer credits. This is the link: https://github.com/rfordatascience/tidytuesday/blob/main/data/2026/2026-01-20/readme.md. Some variables that I will be using include copyright (character), date, explanation (character), media_type (character), title (character), url (character), hdurl (character).</p>
+<p>The research questions I will be trying to answer are:</p>
 <p><em>RQ1</em> - Which months produce the most images of galaxies vs.&nbsp;nebulae vs solar system objects?</p>
+<p>Answer: Solar system objects are consistently the most photographed object with July, January and March being the months that produce the most posts. See visualization 1 for more.</p>
 <p><em>RQ2</em> - Do explanation lengths correlate with image complexity?</p>
-<p><em>RQ3</em> - Has the proportion of videos vs still images increased over time?</p>
-</section>
-<section id="data-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
-<ol type="1">
-<li>What do you want final visualizations to look like?</li>
-</ol>
-<p><em>RQ1</em> - I’d use a stacked bar chart.</p>
-<p><em>RQ2</em> - I’d use a scatter plot with a smoothed line.</p>
-<p><em>RQ3</em> - I’d use a line chart to see how the change is over time.</p>
-<ol start="2" type="1">
-<li>What do you want to show on your final visualizations in order to answer the research questions? How do you plan to do that?</li>
-</ol>
-<p><em>RQ1</em> - I need a to create a variable identifying object type, with groups being: galaxy, nebula, solar system, etc. And a month variable. To create the object type variable, I’d use keywords from the title and explanation.</p>
-<p><em>RQ2</em> - I’d create a variable for explanation length using word count and create another for complexity. I’d define complexity by number of distinct object keywords mentioned (e.g., both galaxy and nebula words).</p>
-<p><em>RQ3</em> - I would create a year or year/month variables from the date variable. I’d then group by year or year/month and media type to get the proportions. Then plot the proportions over time.</p>
-<ol start="3" type="1">
-<li>What is missing from your data or would you need to change in your data to create these visualizations?</li>
-</ol>
-<p>I’m missing the object type, complexity and explanation length. I’d also need to create new dates for research question three. I may need to exclude or recode uncommon media types that are not an image or video if they are included in the data.</p>
+<p>Answer: There is a weak positive correlation between explanation lengths and image complexity. See visualization 2 for more.</p>
 </section>
 <section id="data-cleaning" class="level2">
 <h2 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h2>
-<ol type="1">
-<li>Do you need to reformat any variables into different types (e.g.&nbsp;facotors, time, dates, strings)? Or remove information from variable values?</li>
-</ol>
-<p>Yes, I need to convert media type to a factor with clean levels (e.g., image, video), making sure no other versions of image or video exist in the data (e.g.&nbsp;Image or IMAGE).</p>
-<ol start="2" type="1">
-<li>Do you need to deal with any missing data, especially missing data coded other than NA?</li>
-</ol>
-<p>Yes, I need to check for any missing explanations, titles, media types and dates. For RQ1, I’d recode any rows without a clear object type after keyword searching as either other or exclude it. For RQ2, I’d drop any rows with missing explanation length. For RQ3, I’d drop any rows with missing or irregular media types or recode them to other.</p>
-<ol start="3" type="1">
-<li>Do you need to filter your data? How?</li>
-</ol>
-<p>Yes, I’ll need to filter by media type (e.g., image or video).</p>
-<ol start="4" type="1">
-<li>Do you need to create any new variables? What variables? How?</li>
-</ol>
-<p>Yes, I need to create object type (using keyword search through title and explanation), year or year/month (using the existing date variable), explanation length (using word count from explanation variable) and complexity (number of unique object type categories tagged in a given APOD).</p>
-<ol start="5" type="1">
-<li>Do you need to add new data (join) to your data? What data? How?</li>
-</ol>
-<p>No I do not need to join any new data.</p>
-<ol start="6" type="1">
-<li>Do you need to pivot your data in any way? Why? How?</li>
-</ol>
-<p>I do not need to pivot my data.</p>
-<ol start="7" type="1">
-<li>Do you need to summarize any of the variables? Which ones? How?</li>
-</ol>
-<p>Yes, RQ1 needs a summary count of APOD entries by month and object type. RQ2 needs a summary of correlation statistics between explanation length and complexity, possibly by decade or media type. RQ3 will need a summary of annual or monthly counts and number of media types.</p>
-<ol start="8" type="1">
-<li>What other aspects of your data need to be ‘fixed’ in order to make your data visualizations?</li>
-</ol>
-<p>I need to make sure date ordering is correction and create an ordered factor of month names to make sure it’s not alphabetical. For object type I need to define what is an ambiguous case for inclusion purposes.</p>
-<ol start="9" type="1">
-<li>Are there any variables you can exclude from your data?</li>
-</ol>
-<p>I will not need url, hdurl or copyright for my research question.</p>
-<p><em>Make your programming more efficient using <code>select()</code>, but need to have three yeses above</em></p>
+<p>For my data cleaning, I kept only the information I needed for my research questions and removed extra fields like URLs, HD URLS, and copyright information. I also cleaned up the media type variable so that all entries were consistently labeled as image, video, or other. To prepare for my visualizations, I created new variables from the text and date fields. One variable identifies the object type mentioned in each APOD entry, such as galaxy, nebula, or solar system object, by scanning the title and explanation for keywords. I also created a month and year variable from the date so I could look at patterns over time. For my second research question, I made a word-count variable to measure explanation length and a complexity variable based on how many different object types were mentioned. I also checked for missing or unclear values and planned to exclude or recode anything that did not fit clearly into my categories.</p>
 </section>
-<section id="data-cleaning-pt.-2" class="level2">
-<h2 class="anchored" data-anchor-id="data-cleaning-pt.-2">Data Cleaning Pt. 2</h2>
+<section id="visualization-1" class="level2">
+<h2 class="anchored" data-anchor-id="visualization-1">Visualization 1</h2>
+<p>The first visualization displays the APOD object type, which is either a galaxy, nebulae or solar object and is separated by month. As shown in the visualization solar is the overall most photographed object by NASA, followed by galaxies and nebulae.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>apod_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-01-20/apod.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 6888 Columns: 7
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (6): copyright, explanation, media_type, title, url, hdurl
-date (1): date
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Transformation #1: Selecting relevant columns and dates, dropping url/hdurl/copyright as planned, converting date to proper date format for time-based grouping</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>apod_base <span class="ot">&lt;-</span> apod_raw <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, title, explanation, media_type) <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">ymd</span>(date)) </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Transformation 2: Cleaning media_type and adding basic date feature, extracting month/year as ordered factors for RQ1 and RQ3 plotting</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>apod_timed <span class="ot">&lt;-</span> apod_base <span class="sc">|&gt;</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_type_clean =</span> <span class="fu">str_to_lower</span>(<span class="fu">str_trim</span>(media_type)), <span class="co">#stringr for consistent casing</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_type_clean =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>      media_type_clean <span class="sc">==</span> <span class="st">"image"</span> <span class="sc">~</span> <span class="st">"image"</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      media_type_clean <span class="sc">==</span> <span class="st">"video"</span> <span class="sc">~</span> <span class="st">"video"</span>,</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"other"</span> <span class="co">#Recode irregular types</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">month</span>(date, <span class="at">label =</span> <span class="cn">TRUE</span>), <span class="co">#Ordered month for calendar</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">year</span>(date)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#Transformation 3: Add RQ-specific text-derived variables, creating object_type by keyword matching (galaxy, nebula, solar, other), explanation_length for RQ2 and complexity as count of distinct objects mentioned</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>apod_final <span class="ot">&lt;-</span> apod_timed <span class="sc">|&gt;</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">text_content =</span> <span class="fu">str_to_lower</span>(<span class="fu">str_c</span>(title, <span class="st">" "</span>, explanation, <span class="at">sep =</span> <span class="st">" "</span>)), <span class="co">#Combine texts safely so no error pops up</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Keyword matching for object_type</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">has_galaxy =</span> <span class="fu">str_detect</span>(text_content, <span class="st">"galaxy|milky way"</span>),</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">has_nebula =</span> <span class="fu">str_detect</span>(text_content, <span class="st">"nebula|nebulae"</span>),</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">has_solar =</span> <span class="fu">str_detect</span>(text_content, <span class="st">"planet|mars|jupiter|saturn|venus|mercury|earth|moon|sun"</span>),</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">object_type =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>      has_galaxy <span class="sc">&amp;</span> <span class="sc">!</span>has_nebula <span class="sc">&amp;</span> <span class="sc">!</span>has_solar <span class="sc">~</span> <span class="st">"galaxy"</span>,</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>      has_nebula <span class="sc">&amp;</span> <span class="sc">!</span>has_galaxy <span class="sc">&amp;</span> <span class="sc">!</span>has_solar <span class="sc">~</span> <span class="st">"nebula"</span>,</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>      has_solar <span class="sc">&amp;</span> <span class="sc">!</span>has_galaxy <span class="sc">&amp;</span> <span class="sc">!</span>has_nebula <span class="sc">~</span> <span class="st">"solar"</span>,</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"other"</span> <span class="co">#For amiguous/multi-object cases</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">explanation_length =</span> <span class="fu">str_count</span>(explanation, <span class="fu">boundary</span>(<span class="st">"word"</span>)), <span class="co">#Word count for RQ2</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">complexity =</span> (has_galaxy <span class="sc">+</span> has_nebula <span class="sc">+</span> has_solar) <span class="co">#Distinct types</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>text_content, <span class="sc">-</span>media_type)</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="co">#Exporting datasets</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co">#write_csv(apod_raw, "data-raw/apod_raw.csv")</span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="co">#write_csv(apod_base, "data-raw/apod_base.csv")</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co">#write_csv(apod_timed, "data-raw/apod_timed.csv")</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="co">#write_csv(apod_final, "data-clean/apod_final.csv")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="data-visualization-pt.-2" class="level2">
-<h2 class="anchored" data-anchor-id="data-visualization-pt.-2">Data Visualization Pt. 2</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>apod_final <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(month, object_type) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(object_type <span class="sc">!=</span> <span class="st">"other"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> n, <span class="at">fill =</span> object_type)) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"APOD Object Types by Month"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Month"</span>,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Count"</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Object Type"</span>) <span class="sc">+</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>, <span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="co">#Changing the color of object type using a new code I found!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -358,6 +172,28 @@ date (1): date
 </div>
 </div>
 </div>
+<blockquote class="blockquote">
+<p>Monthly counts of APOD object types by category</p>
+</blockquote>
+</section>
+<section id="visualization-2" class="level2">
+<h2 class="anchored" data-anchor-id="visualization-2">Visualization 2</h2>
+<p>The second visualization shows the relationship between explanation length and image complexity for APOD entries. Each point represents one APOD entry, with explanation length measured by word count and complexity measured by the number of different object keywords mentioned in the title and explanation (e.g., solar, nebula, galaxy). The plot shows whether longer explanations tend to go with more complex images.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Part1_files/figure-html/Data-Viz-RQ2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Scatterplot of APOD explanation length and coded image complexity.</p>
+</blockquote>
 
 
 </section>
