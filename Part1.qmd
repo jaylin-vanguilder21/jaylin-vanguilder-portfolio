@@ -92,7 +92,7 @@ apod_final |>
 ## Visualization 2
 
 The second visualization shows the relationship between explanation length and image complexity for APOD entries. Each point represents one APOD entry, with explanation length measured by word count and complexity measured by the number of different object keywords mentioned in the title and explanation (e.g., solar, nebula, galaxy). The plot shows whether longer explanations tend to go with more complex images.
-```{r, echo = FALSE, fig.height = 4}
+```{r, echo = FALSE, message = FALSE, fig.height = 4}
 #| label: Data-Viz-RQ2
 
 ggplot(apod_final, aes(x = explanation_length, y = complexity)) +
